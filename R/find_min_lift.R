@@ -26,7 +26,7 @@
 #' data <- cbind(y, x1)
 #' df <- find_min_lift(data, per_period_lifts = c(0.01,1,2), pre.period = c(1,70), post.period = c(71,100))
 #' print(df)
-
+#' @export
 find_min_lift <- function(data = NULL, pre.period = NULL,
                           post.period = NULL, model.args = NULL,
                           bsts.model = NULL, post.period.response = NULL,
