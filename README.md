@@ -23,7 +23,7 @@ x1 <- 100 + arima.sim(model = list(ar = 0.999), n = 100)
 y <- 1.2 * x1 + rnorm(100)
 data <- cbind(y, x1)
 
-# sumulate per-period lifts
+# simulate per-period lifts
 needed_lifts <- find_min_lift(data, per_period_lifts = c(0.01,1,2), 
   pre.period = c(1,70), post.period = c(71,100))
 needed_lifts 
