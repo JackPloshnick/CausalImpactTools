@@ -35,8 +35,9 @@ find_min_lift <- function(data = NULL, pre.period = NULL,
   #prepare for the loop
   results <- list()
   pre.period.sd <- sd(data[,1][pre.period[1]:pre.period[2]])
-  pre.period.length <- length(data[post.period[1]:post.period[2]])
+  pre.period.length <- length(data[pre.period[1]:pre.period[2]])
   pre.period.se <- pre.period.sd / sqrt(pre.period.length)
+  post.period.length <- length(data[post.period[1]:post.period[2]])
 
   counter <- 0
 
@@ -45,7 +46,7 @@ find_min_lift <- function(data = NULL, pre.period = NULL,
     loop_data <- data
 
     # simulate a lift
-    loop_data[,1][post.period[1]:post.period[2]] <- loop_data[post.period[1]:post.period[2]] +  rnorm(pre.period.length, sd = pre.period.se, mean = lift )
+    loop_data[,1][post.period[1]:post.period[2]] <- loop_data[post.period[1]:post.period[2]] +  rnorm(post.period.length, sd = pre.period.se, mean = lift )
 
 
     impact <- CausalImpact(data = loop_data, pre.period,
