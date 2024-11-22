@@ -36,7 +36,7 @@ find_min_lift <- function(data = NULL, pre.period = NULL,
   results <- list()
   pre.period.sd <- sd(data[,1][pre.period[1]:pre.period[2]])
   pre.period.length <- length(data[post.period[1]:post.period[2]])
-  pre.period.se <- sd / sqrt(pre.period.length)
+  pre.period.se <- pre.period.sd / sqrt(pre.period.length)
 
   counter <- 0
 
