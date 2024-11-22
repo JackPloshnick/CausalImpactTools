@@ -8,7 +8,7 @@ a dataframe which can be used to approximate the needed lift for a `CausalImpact
 
 This function simulates a lift by adding the following to the post period dependent variable:
 ```r
-+ rnorm(<post.period.length>, sd = <pre.period.sd>, mean = <simulated.lift> )
++ rnorm(<post.period.length>, sd = <pre.period.standard.error>, mean = <simulated.lift> )
 ```
 
 If you expect the variance of your dependent variable to be signifigantly different when the test is 
