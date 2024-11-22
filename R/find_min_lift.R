@@ -42,7 +42,7 @@ find_min_lift <- function(data = NULL, pre.period = NULL,
     loop_data <- data
 
     # simulate a lift
-    loop_data[,1][post.period[1]:post.period[2]] <- loop_data[post.period[1]:post.period[2]] + rnorm(length(loop_data[post.period[1]:post.period[2]]), sd = pre.period.sd, mean = lift )
+    loop_data[,1][post.period[1]:post.period[2]] <- loop_data[post.period[1]:post.period[2]] + lift  #+ rnorm(length(loop_data[post.period[1]:post.period[2]]), sd = pre.period.sd, mean = lift )
 
 
     impact <- CausalImpact(data = loop_data, pre.period,
