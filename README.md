@@ -33,6 +33,6 @@ data <- cbind(y, x1)
 
 # simulate per-period lifts
 needed_lifts <- find_min_lift(data, per_period_lifts = c(0.01,1,2), 
-  pre.period = c(1,70), post.period = c(71,100))
+  number_of_simulations = 5, pre.period = c(1,70), post.period = c(71,100))
 needed_lifts 
 ```
