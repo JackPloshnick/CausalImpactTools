@@ -12,7 +12,8 @@ find_min_lift(
   bsts.model = NULL,
   post.period.response = NULL,
   alpha = 0.05,
-  per_period_lifts = NULL
+  per_period_lifts = NULL,
+  number_of_simulations = 1
 )
 }
 \arguments{
@@ -31,12 +32,16 @@ find_min_lift(
 \item{alpha}{Significance level for the analysis. Defaults to \code{0.05}.}
 
 \item{per_period_lifts}{A numeric vector of lift values per period.}
+
+\item{number_of_simulations}{The number of simulations that should be run at each lift level.}
 }
 \value{
-A data frame with two columns:
+A data frame with four columns:
 \itemize{
 \item \code{lift}: The simulated lift values.
-\item \code{p_value}: The corresponding p-values from the \code{CausalImpact} analysis.
+\item \code{min_p_value}: The minimum p-values from all simulations of the \code{CausalImpact} analysis.
+\item \code{max_p_value}: The maximum p-values from all simulations of the \code{CausalImpact} analysis.
+\item \code{avg_p_value}: The average p-values from all simulations of the \code{CausalImpact} analysis.
 }
 }
 \description{
@@ -51,6 +56,8 @@ library(CausalImpact)
 x1 <- 100 + arima.sim(model = list(ar = 0.999), n = 100)
 y <- 1.2 * x1 + rnorm(100)
 data <- cbind(y, x1)
-df <- find_min_lift(data, per_period_lifts = c(0.01,1,2), pre.period = c(1,70), post.period = c(71,100))
+df <- find_min_lift(data, per_period_lifts = c(0.01,1,2), 
+  number_of_simulations = 5, pre.period = c(1,70), post.period = c(71,100))
 print(df)
+
 }
